@@ -213,7 +213,7 @@ describe("GET /hotels/:hotelId", () => {
 
       const hotel = await createHotel();
 
-      const response = await server.get("/hotels/1").set("Authorization", `Bearer ${token}`);
+      const response = await server.get(`/hotels/${hotel.id}`).set("Authorization", `Bearer ${token}`);
 
       expect(response.status).toBe(httpStatus.OK);
     });
@@ -244,14 +244,14 @@ describe("GET /hotels/:hotelId", () => {
         image: hotel.image,
         createdAt: expect.any(String),
         updatedAt: expect.any(String),
-        Rooms: {
+        Rooms: [{
           id: room.id,
           name: room.name,
           capacity: room.capacity,
           hotelId: room.hotelId,
           createdAt: expect.any(String),
           updatedAt: expect.any(String)
-        }
+        }]
       }]);
     });
   });

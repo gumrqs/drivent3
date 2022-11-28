@@ -31,12 +31,12 @@ async function findRooms(userId: number, hotelId: number) {
 
   console.log("le erro");
   const rooms = await hotelRepository.findRoomsByHotelId(hotelId);
-
+  console.log(rooms, "***************");
   return rooms;
 }
 const hotelsService = {
   getTicketsWithHotels,
-  findRooms
+  findRooms,
   
 };
 
